@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1= title
+   
+  - var rw = Number(query.rows)  
+  - var cl = Number(query.cols) 
+
+  p Matrix with: #{query.rows} rows and #{query.cols} cols
+
+  - if (!Number.isInteger(rw) || !Number.isInteger(cl)){
+    p Please give an integer value.
+  -}
+  - else if (rw < 1 || rw > 10){
+    p Rows value should be in between 1 to 10.
+  -}
+  - else if (cl < 1 || cl > 10){
+    p Columns value should be in between 1 to 10.
+  -}
+  - else{
+    table#outer  
+      - for (let r = 0; r < rw; r++){ 
+        tr#middle  
+          - for (let h = 0; h < cl; h++){
+            - if (r === h){
+              td= 1
+            -}
+            - else if (r === h + 1){
+              td= 2
+            -}
+            - else if (r === h - 1){
+              td= r
+            -}
+            - else{
+              td= 0
+            -}
+          -}
+      -}
+    -}

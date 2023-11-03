@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  - let results = [{item_name:"Smart Watch", brand: "Apple", price: 250},{item_name:"Earphones", brand: "Samsung", price: 100},{item_name:"Camera", brand: "Canon", price: 1000}];
+
+  div(class="container-fluid")
+    div(class="row")
+      each r,indx in results
+        div(class="col-sm-2" onclick=`buy(${indx})`) #{r.item_name}, #{r.brand}, #{r.price}
+        script.
+            function buy(v) {
+              alert(`Your purchased item no: ${v+1}`)
+            }
