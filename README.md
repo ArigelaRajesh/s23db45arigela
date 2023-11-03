@@ -2,7 +2,7 @@
 
 Hey, I'm Rajesh! I'm a cricket enthusiast who loves playing and watching the game.
 
-[Link to render server](https://f23wb45arigela.onrender.com)
+[Link to render server](https://s23db45arigela.onrender.com/)
 
 ### Class I choosen: Electronics
 ### Attributes:
