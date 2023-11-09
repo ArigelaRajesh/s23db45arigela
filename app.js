@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var electronicsRouter = require('./routes/electronics');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
+var resourceRouter = require('./routes/resource');
 
 var electronics = require("./models/electronics");
 
@@ -35,6 +36,7 @@ app.use('/users', usersRouter);
 app.use('/electronics', electronicsRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,6 +53,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
 
 // We can seed the collection if needed onserver start
 async function recreateDB(){
