@@ -10,6 +10,8 @@ var electronicsRouter = require('./routes/electronics');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 
+var electronics = require("./models/electronics");
+
 var app = express();
 
 // view engine setup
@@ -21,6 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('dotenv').config();
+const connectionString =
+process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -43,5 +51,37 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// We can seed the collection if needed onserver start
+async function recreateDB(){
+  // Delete everything
+ //  await Devices.deleteMany();
+  let instance1 = new
+  electronics({item_name:"Smart Watch", brand:'Apple', price:250});
+  instance1.save().then(doc=>{
+  console.log("First object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+  
+  
+  let instance2 = new
+  electronics({item_name:"Earphones", brand:"Samsung", price:100});
+  instance2.save().then(doc=>{
+  console.log("secound object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+  
+  let instance3 = new
+  electronics({item_name:"Camera", brand:"Canon", price:1000});
+  instance3.save().then(doc=>{
+  console.log("Third object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+ }
+ let reseed = true;
+ if (reseed) {recreateDB();}
 
 module.exports = app;
