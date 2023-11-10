@@ -2,8 +2,8 @@ var electronics = require('../models/electronics');
 // List of all electronics
 exports.electronics_list = async function(req, res) {
     try{
-    electronics = await electronics.find();
-    res.send(electronics);
+    theElectronics = await electronics.find();
+    res.send(theElectronics);
     }
     catch(err){
     res.status(500);
@@ -14,8 +14,8 @@ exports.electronics_list = async function(req, res) {
 // Handle a show all view
 exports.electronics_view_all_Page = async function(req, res) {
     try{
-    electronics = await electronics.find();
-    res.render('electronics', { title: 'Electronics Search Results', results: electronics });
+    theElectronics = await electronics.find();
+    res.render('electronics', { title: 'Electronics Search Results', results: theElectronics });
     }
     catch(err){
     res.status(500);
@@ -58,6 +58,22 @@ exports.electronics_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: electronics delete DELETE ' + req.params.id);
 };
 // Handle electronics update form on PUT.
-exports.electronics_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: electronics update PUT' + req.params.id);
-};
+exports.electronics_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+   ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await electronics.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.item_name)
+    toUpdate.item_name = req.body.item_name;
+    if(req.body.brand) toUpdate.brand = req.body.brand;
+    if(req.body.price) toUpdate.price = req.body.price;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+   failed`);
+    }
+   };
