@@ -23,9 +23,16 @@ exports.electronics_view_all_Page = async function(req, res) {
     }
    };   
 // for a specific electronics.
-exports.electronics_detail = function(req, res) {
- res.send('NOT IMPLEMENTED: electronics detail: ' + req.params.id);
-};
+exports.electronics_detail = async function(req, res) {
+    console.log("electronics" + req.params.id)
+    try {
+    result = await electronics.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   };
 // Handle electronics create on POST.
 exports.electronics_create_post = async function(req, res) {
     console.log(req.body)
