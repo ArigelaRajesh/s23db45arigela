@@ -64,7 +64,8 @@ console.log("Connection to DB succeeded")});
 // We can seed the collection if needed onserver start
 async function recreateDB(){
   // Delete everything
- //  await Devices.deleteMany();
+ await electronics.deleteMany();
+
   let instance1 = new
   electronics({item_name:"Smart Watch", brand:'Apple', price:250});
   instance1.save().then(doc=>{

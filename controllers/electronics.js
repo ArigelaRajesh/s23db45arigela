@@ -53,10 +53,18 @@ exports.electronics_create_post = async function(req, res) {
         res.send(`{"error": ${err}}`);
         }
        };
-// Handle electronics delete form on DELETE.
-exports.electronics_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: electronics delete DELETE ' + req.params.id);
-};
+// Handle electronics delete on DELETE.
+exports.electronics_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await electronics.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
 // Handle electronics update form on PUT.
 exports.electronics_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body
