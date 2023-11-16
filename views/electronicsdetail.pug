@@ -2,24 +2,28 @@ extends layout
 
 block content
   h1= title
-  - let electronicsid = toShow._id
-  - let item_name = toShow.item_name
-  - let brand = toShow.brand
-  - let price = toShow.price
+  if (toShow == null)
+    h2 No instance to show the details
+  else  
+    - let electronicsid = toShow._id
+    - let item_name = toShow.item_name
+    - let brand = toShow.brand
+    - let price = toShow.price
 
-  div
-    div.row
-      div(class='electronicsAttr mr-3') electronics ID is:
-      div #{electronicsid}
+    div 
+      br
+      div.row
+        div(class='electronicsAttr mr-3') Electronics ID is:
+        div(style='color: Orange; padding: 5px;') #{electronicsid}
 
-    div.row
-      div(class='electronicsAttr mr-3') Item is:
-      div #{item_name}
+      div.row
+        div(class='electronicsAttr1 mr-3') Item is:
+        div(style='color: blue; padding: 5px;') #{item_name}
 
-    div.row
-      div(class='electronicsAttr mr-3') Brand is:
-      div #{brand}
+      div.row
+        div(class='electronicsAttr2 mr-3') Brand is:
+        div(style='color: red; padding: 5px;') #{brand}
 
-    div.row
-      div(class='electronicsAttr mr-3') price is:
-      div #{price}
+      div.row
+        div(class='electronicsAttr3 mr-3') price is:
+        div(style='color: green; padding: 5px;') #{price}

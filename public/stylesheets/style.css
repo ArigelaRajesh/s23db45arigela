@@ -9,5 +9,20 @@ a {
 
 .electronicsAttr {
   background-color: aquamarine;
-  width: 120px;
+  width: 150px;
+  }
+
+  .electronicsAttr1 {
+    background-color: rgb(250, 234, 82);
+    width: 120px;
+  }
+  
+  .electronicsAttr2 {
+    background-color: rgb(229, 24, 229);
+    width: 120px;
+  }
+
+  .electronicsAttr3 {
+    background-color: rgb(86, 239, 21);
+    width: 120px;
   }
