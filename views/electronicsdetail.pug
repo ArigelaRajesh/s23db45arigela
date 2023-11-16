@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  - let electronicsid = toShow._id
+  - let item_name = toShow.item_name
+  - let brand = toShow.brand
+  - let price = toShow.price
+
+  div
+    div.row
+      div(class='electronicsAttr mr-3') electronics ID is:
+      div #{electronicsid}
+
+    div.row
+      div(class='electronicsAttr mr-3') Item is:
+      div #{item_name}
+
+    div.row
+      div(class='electronicsAttr mr-3') Brand is:
+      div #{brand}
+
+    div.row
+      div(class='electronicsAttr mr-3') price is:
+      div #{price}
