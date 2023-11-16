@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -9,20 +9,24 @@ a {
 
 .electronicsAttr {
   background-color: aquamarine;
-  width: 150px;
+  font-weight: bold;
+  width: 180px;
   }
 
   .electronicsAttr1 {
     background-color: rgb(250, 234, 82);
+    font-weight: bold;
     width: 120px;
   }
   
   .electronicsAttr2 {
     background-color: rgb(229, 24, 229);
+    font-weight: bold;
     width: 120px;
   }
 
   .electronicsAttr3 {
     background-color: rgb(86, 239, 21);
+    font-weight: bold;
     width: 120px;
   }
