@@ -2,13 +2,19 @@ extends layout
 
 block content
   h1= title
-  - var results = [{item_name:"Smart Watch", brand: "Apple", price: 250},{item_name:"Earphones", brand: "Samsung", price: 100},{item_name:"Camera", brand: "Canon", price: 1000}];
+  - let results = [{item_name:"Smart Watch", brand: "Apple", price: 250},{item_name:"Earphones", brand: "Samsung", price: 100},{item_name:"Camera", brand: "Canon", price: 1000}];
 
   div(class="container-fluid")
     div(class="row")
-      each r,indx in results
+      each r, indx in results
+        - let destination = `/electronics1/update?id=${r._id}`
         div(class="col-sm-2" onclick=`buy(${indx})`) #{r.item_name}, #{r.brand}, #{r.price}
-        script.
-            function buy(v) {
-              alert(`Your purchased item no: ${v+1}`)
-            }
+        button.btn( class="btn-primary ml-1", onclick= `dispatch("${destination}")`) Update
+
+  script.
+    function buy(v) {
+      alert(`Your purchased item no: ${v+1}`)
+    }
+    function dispatch(path){
+      window.location.href = path;
+    }
