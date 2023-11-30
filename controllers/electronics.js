@@ -12,16 +12,16 @@ exports.electronics_list = async function(req, res) {
    };
 // VIEWS
 // Handle a show all view
-exports.electronics_view_all_Page = async function(req, res) {
-    try{
-    theElectronics = await electronics.find();
-    res.render('electronics', { title: 'Electronics Search Results', results: theElectronics });
+exports.electronics_view_all_Page = async function (req, res) {
+    try {
+        theElectronics = await electronics.find();
+        res.render('electronics', { title: 'Electronics Search Results', results: theElectronics });
     }
-    catch(err){
-    res.status(500);
-    res.send(`{"error": ${err}}`);
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
     }
-   };   
+};   
 // for a specific electronics.
 exports.electronics_detail = async function(req, res) {
     console.log("electronics" + req.params.id)
