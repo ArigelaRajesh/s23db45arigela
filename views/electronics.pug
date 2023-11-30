@@ -3,21 +3,22 @@ extends layout
 block content
   h1= title
   br
-  - let results = [{item_name:"Smart Watch", brand: "Apple", price: 250},{item_name:"Earphones", brand: "Samsung", price: 100},{item_name:"Camera", brand: "Canon", price: 1000}];
+  - let items = results
   - let destination = `/electronics1/create`
     button.btn( class="btn-success ml-1", onclick= `dispatch("${destination}")`) Create New Electronics Item
     br
     br
+
   div(class="container-fluid")
     div(class="row")
-      each r, index in results
+      each item in items
         div(class="col-md-4" onclick=`buy(${index})`)
-          div.item_name= r.item_name
-          div.brand= r.brand
-          div.price= r.price
-          - let destination1 = `/electronics1/update?id=${r._id}`
-          - let destination2 = `/electronics1/detail?id=${r._id}`
-          - let destination3 = `/electronics1/delete?id=${r._id}`
+          div.item_name= item.item_name
+          div.brand= item.brand
+          div.price= item.price
+          - let destination1 = `/electronics1/update?id=${item._id}`
+          - let destination2 = `/electronics1/detail?id=${item._id}`
+          - let destination3 = `/electronics1/delete?id=${item._id}`
           button.btn( class="btn-warning ml-1", onclick= `dispatch("${destination1}")`) Update
           button.btn( class="btn-info ml-1", onclick= `dispatch("${destination2}")`) Detail
           button.btn( class="btn-danger ml-1", onclick= `dispatch("${destination3}")`) Delete
