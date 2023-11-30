@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const electronicsSchema = mongoose.Schema({
 item_name: String,
 brand: {type: String,
-minlength: 10,
+minlength: 5,
 maxlength: 15,
 },   
 price:{type: Number,
