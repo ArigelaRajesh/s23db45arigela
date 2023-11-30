@@ -13,10 +13,10 @@ res.redirect("/login");
 /* GET detail electronics page */
 router.get('/detail', electronics_controlers.electronics_view_one_Page);
 /* GET create electronics page */
-router.get('/create', electronics_controlers.electronics_create_Page);
+router.get('/create',secured, electronics_controlers.electronics_create_Page);
 /* GET update electronics page */
 router.get('/update',secured, electronics_controlers.electronics_update_Page);
 /* GET delete electronics page */
-router.get('/delete', electronics_controlers.electronics_delete_Page);
+router.get('/delete',secured, electronics_controlers.electronics_delete_Page);
 
 module.exports = router;
